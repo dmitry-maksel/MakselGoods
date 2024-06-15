@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Identity.API.Core.Queries;
+using Identity.API.Extensions;
 
 namespace Identity.API.Core.Validators
 {

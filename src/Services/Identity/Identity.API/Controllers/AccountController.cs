@@ -72,5 +72,12 @@ namespace Identity.API.Controllers
                 throw;
             }
         }
+
+        [HttpPost("testauth")]
+        [Authorize]
+        public IActionResult Test()
+        {
+            return Ok();
+        }
     }
 }

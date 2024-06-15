@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Identity.API.Core.Validators
+namespace Identity.API.Extensions
 {
     public static class ValidatorExtensions
     {
