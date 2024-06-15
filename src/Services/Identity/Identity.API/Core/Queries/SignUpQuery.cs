@@ -6,5 +6,5 @@ namespace Identity.API.Core.Queries
         string DisplayName,
         string UserName,
         string Email,
-        string Password) : IRequest<int>;
+        string Password) : IRequest<int>, ILoggedRequest;
 }

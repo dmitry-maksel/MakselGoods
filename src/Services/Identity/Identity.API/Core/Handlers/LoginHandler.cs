@@ -34,7 +34,6 @@ namespace Identity.API.Core.Handlers
                 throw new IdentityException("User not found");
             }
 
-            //var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (!result.Succeeded) throw new IdentityException("Invalid username or password");
