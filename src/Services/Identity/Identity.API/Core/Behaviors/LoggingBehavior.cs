@@ -4,7 +4,7 @@ using MediatR;
 namespace Identity.API.Core.Behaviors
 {
     public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest: notnull, ILoggedRequest
+        where TRequest : notnull, ILoggedRequest
     {
         private readonly ILogger _logger;
 

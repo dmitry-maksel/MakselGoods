@@ -1,8 +1,8 @@
 ﻿namespace Identity.API.Core.Exceptions
 {
-    public class IdentityException : Exception
+    public class ApplicationException : Exception
     {
-        public IdentityException(string message)
+        public ApplicationException(string message)
             : base(message)
         {
 

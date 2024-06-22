@@ -21,14 +21,14 @@ namespace Identity.API.Core.Handlers
 
             if (user is not null)
             {
-                throw new IdentityException("Email already exist");
+                throw new Exceptions.ApplicationException("Email already exist");
             }
 
             user = await _userManager.FindByNameAsync(request.UserName);
 
             if (user is not null)
             {
-                throw new IdentityException("UserName already exist");
+                throw new Exceptions.ApplicationException("UserName already exist");
             }
 
             user = new ApplicationUser
@@ -42,7 +42,7 @@ namespace Identity.API.Core.Handlers
 
             if (result.Succeeded) return user.Id;
 
-            throw new IdentityException("SignUp process failed");
+            throw new Exceptions.ApplicationException("SignUp process failed");
         }
     }
 }

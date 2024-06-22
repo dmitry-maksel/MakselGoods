@@ -31,12 +31,12 @@ namespace Identity.API.Core.Handlers
 
             if (user == null)
             {
-                throw new IdentityException("User not found");
+                throw new Exceptions.ApplicationException("User not found");
             }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
-            if (!result.Succeeded) throw new IdentityException("Invalid username or password");
+            if (!result.Succeeded) throw new Exceptions.ApplicationException("Invalid username or password");
 
             var token = _tokenGenerator.GenerateToken(user);
 

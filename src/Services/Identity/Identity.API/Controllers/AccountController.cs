@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Identity.API.Controllers
 {
     [ApiController]
-    [Route("api/account")]
+    [Route("api/v1/account")]
     public class AccountController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -64,7 +64,7 @@ namespace Identity.API.Controllers
             {
                 var id = await _mediator.Send(signUpQuery);
 
-                return id > 0 ? Ok(id) : BadRequest($"{nameof(SignUp)} failed");
+                return Ok();
             }
             catch (Exception ex)
             {

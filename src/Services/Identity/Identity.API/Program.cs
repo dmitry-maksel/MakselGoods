@@ -10,9 +10,11 @@ builder.Services.InstallServicesInAssembly(configuration);
 
 builder.Services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
 builder.Services.AddControllers();
-
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
+
+app.MapHealthChecks("/health");
 
 await app.SeedData();
 
