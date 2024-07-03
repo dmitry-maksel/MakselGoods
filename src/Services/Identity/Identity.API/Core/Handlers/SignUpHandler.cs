@@ -1,5 +1,4 @@
 ﻿using Identity.API.Core.Data;
-using Identity.API.Core.Exceptions;
 using Identity.API.Core.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
