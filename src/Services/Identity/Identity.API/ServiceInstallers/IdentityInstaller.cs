@@ -11,7 +11,7 @@ namespace Identity.API.ServiceInstallers
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration["ConnectionString"],
+                options.UseSqlServer(configuration.GetConnectionString("Default"),
                 sqlServerOptionsAction: sqlOptions =>
                 {
                     sqlOptions.MigrationsAssembly(typeof(Program).GetTypeInfo().Assembly.GetName().Name);

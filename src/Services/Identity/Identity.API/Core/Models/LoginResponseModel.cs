@@ -1,4 +1,4 @@
 ﻿namespace Identity.API.Core.Models
 {
-    public record LoginResponseModel(int Id, string Token);
+    public record LoginResponseModel(string Token);
 }

@@ -39,7 +39,7 @@ namespace Identity.API.Core.Handlers
 
             var token = _tokenGenerator.GenerateToken(user);
 
-            return new LoginResponseModel(user.Id, token);
+            return new LoginResponseModel(token);
         }
     }
 }

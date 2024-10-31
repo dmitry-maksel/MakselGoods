@@ -1,5 +1,6 @@
 ﻿
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Core.Queries.Products;
 
@@ -55,6 +56,7 @@ namespace Products.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductQuery query, IValidator<CreateProductQuery> validator)
         {
@@ -81,6 +83,7 @@ namespace Products.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> Update(UpdateProductQuery query, IValidator<UpdateProductQuery> validator)
         {
@@ -107,6 +110,7 @@ namespace Products.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {

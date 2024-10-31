@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Core.Queries.Tags;
 
@@ -53,6 +54,7 @@ namespace Products.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreateTagQuery query, IValidator<CreateTagQuery> validator)
         {
@@ -79,6 +81,7 @@ namespace Products.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> Update(UpdateTagQuery query, IValidator<UpdateTagQuery> validator)
         {
@@ -105,6 +108,7 @@ namespace Products.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

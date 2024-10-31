@@ -1,9 +1,11 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Core.Queries;
 
 namespace Products.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/v1")]
     public class ProductsTagsController : ControllerBase
