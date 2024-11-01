@@ -1,0 +1,26 @@
+services:
+  identity.api:
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+    ports:
+      - "5051:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - mynetwork
+
+  products.api:
+    build:
+      context: .
+      dockerfile: Services/Products/Products.API/Dockerfile
+    ports:
+      - "5052:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

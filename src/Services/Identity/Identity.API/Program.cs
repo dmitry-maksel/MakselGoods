@@ -12,6 +12,11 @@ builder.Services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
 builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 
+builder.WebHost.ConfigureKestrel(opts =>
+{
+    opts.ListenAnyIP(80);
+});
+
 var app = builder.Build();
 
 app.MapHealthChecks("/health");

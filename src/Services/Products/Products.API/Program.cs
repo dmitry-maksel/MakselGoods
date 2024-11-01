@@ -84,6 +84,11 @@ builder.Services.AddAuthentication(opt =>
     };
 });
 
+builder.WebHost.ConfigureKestrel(opts =>
+{
+    opts.ListenAnyIP(80);
+});
+
 var app = builder.Build();
 
 try
