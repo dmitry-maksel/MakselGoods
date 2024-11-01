@@ -9,7 +9,8 @@ Enhancements list:
 
 TODO list:
   MAJOR
-    - Add ApiGateway for WebFrontEnd
+    - Add Reviews microservice
+    - Add ApiGateway for WebFrontEnd (Ocelot)
     - Grpc
     - RabbitMQ
     - K8s
@@ -21,3 +22,16 @@ TODO list:
     - Docker SQL with Migrations and seeds
     - background tasks (jobs)
     - web status of mservices
+    - kaffka
+    - minimal api
+    - dapper for stored procedures and simple queries
+    - EF configuration and limitations (no parallelism)
+    - CQRS with FluentValidation
+    - Refit - http api client
+    - Auth with Jwt
+    - Cache - InMemory, Redis
+    - Tets (unit, integration, end to end)
+    - TDD
+    - Swagger
+    - secrets
+
