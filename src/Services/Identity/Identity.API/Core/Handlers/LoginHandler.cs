@@ -24,7 +24,7 @@ namespace Identity.API.Core.Handlers
         }
         public async Task<LoginResponseModel> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
-            if (cancellationToken.IsCancellationRequested) throw new OperationCanceledException();
+            cancellationToken.ThrowIfCancellationRequested();
 
             var user = await _userManager.FindByNameAsync(request.Username);
 

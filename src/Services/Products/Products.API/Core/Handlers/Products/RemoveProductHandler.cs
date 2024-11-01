@@ -12,9 +12,9 @@ namespace Products.API.Core.Handlers.Products
 
         public async Task<bool> Handle(RemoveProductQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("{handlerName} started with request: {requst}", nameof(RemoveProductHandler), request);
-
             ArgumentNullException.ThrowIfNull(nameof(request));
+
+            _logger.LogInformation("{handlerName} started with request: {requst}", nameof(RemoveProductHandler), request);
 
             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 

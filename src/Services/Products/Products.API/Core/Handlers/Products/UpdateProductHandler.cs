@@ -11,15 +11,15 @@ namespace Products.API.Core.Handlers.Products
 
         public async Task<bool> Handle(UpdateProductQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("{handlerName} started with request: {requst}", nameof(UpdateProductHandler), request);
-
             ArgumentNullException.ThrowIfNull(nameof(request));
+
+            _logger.LogInformation("{handlerName} STARTED with request: {requst}", nameof(UpdateProductHandler), request);
 
             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             if (product == null)
             {
-                _logger.LogWarning("Product with id:{id} not found", request.Id);
+                _logger.LogWarning("{handlerName} Product with id:{id} not found", nameof(UpdateProductHandler), request.Id);
                 return false;
             }
 
@@ -28,6 +28,8 @@ namespace Products.API.Core.Handlers.Products
             product.ModifiedAt = DateTimeOffset.UtcNow;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
+
+            _logger.LogInformation("{handlerName} FINISHED with request: {requst}", nameof(UpdateProductHandler), request);
 
             return true;
         }

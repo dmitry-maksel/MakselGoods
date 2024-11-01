@@ -16,6 +16,8 @@ namespace Identity.API.Core.Handlers
 
         public async Task<int> Handle(SignUpQuery request, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user is not null)

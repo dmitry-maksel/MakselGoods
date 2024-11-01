@@ -16,9 +16,9 @@ namespace Products.API.Core.Handlers.Products
 
         public async Task<Product?> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("{handlerName} started with request: {requst}", nameof(GetProductByIdHandler), request);
-
             ArgumentNullException.ThrowIfNull(request);
+
+            _logger.LogInformation("{handlerName} started with request: {requst}", nameof(GetProductByIdHandler), request);
 
             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 

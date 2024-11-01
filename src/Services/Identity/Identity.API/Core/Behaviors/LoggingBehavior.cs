@@ -19,15 +19,13 @@ namespace Identity.API.Core.Behaviors
         {
             try
             {
-                _logger.LogInformation($@"Before execution for {typeof(TRequest).Name};
-Started at: {DateTime.UtcNow}");
+                _logger.LogInformation($"Before execution for {typeof(TRequest).Name};\nStarted at: {DateTime.UtcNow}");
 
                 return await next();
             }
             finally
             {
-                _logger.LogInformation(@$"After execution for {typeof(TRequest).Name}
-Completed at: {DateTime.UtcNow}");
+                _logger.LogInformation(@$"After execution for {typeof(TRequest).Name}\nCompleted at: {DateTime.UtcNow}");
             }
         }
     }

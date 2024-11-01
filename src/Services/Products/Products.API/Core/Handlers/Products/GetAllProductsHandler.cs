@@ -18,11 +18,13 @@ namespace Products.API.Core.Handlers.Products
 
         public async Task<List<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("{handlerName} started with request: {requst}", nameof(GetAllProductsHandler), request);
-
             ArgumentNullException.ThrowIfNull(request);
 
+            _logger.LogInformation("{handlerName} STARTED with request: {requst}", nameof(GetAllProductsHandler), request);
+
             var products = await _dbContext.Products.ToListAsync(cancellationToken);
+
+            _logger.LogInformation("{handlerName} FINISHED with request: {requst}", nameof(GetAllProductsHandler), request);
 
             return products;
         }

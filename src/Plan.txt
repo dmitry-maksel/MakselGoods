@@ -1,0 +1,23 @@
+Enhancements list:
+    - Logging
+        - Set up logging levels for different libs and envs
+    - Swagger
+        - Enhance auth token
+        - Add details
+        - ...
+    - JWT Auth
+
+TODO list:
+  MAJOR
+    - Add ApiGateway for WebFrontEnd
+    - Grpc
+    - RabbitMQ
+    - K8s
+  MINOR
+    - Add WebFrontEnd with Angular
+    - Add WebFrontEnd with React
+    - SignalRHub
+    - Use MongoDB
+    - Docker SQL with Migrations and seeds
+    - background tasks (jobs)
+    - web status of mservices
