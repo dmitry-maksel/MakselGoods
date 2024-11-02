@@ -6,7 +6,7 @@ using Products.API.Core.Queries.Tags;
 namespace Products.API.Controllers
 {
     [ApiController]
-    [Route("api/v1/tag")]
+    [Route("api/v1/tags")]
     public class TagController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -12,6 +12,8 @@
 
         public DateTimeOffset ModifiedAt { get; set; }
 
+        public DateTimeOffset? DeletedAt { get; set; }
+
         public List<Tag> Tags { get; set; } = [];
     }
 }

@@ -5,6 +5,7 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30C31B6B-A2C2-443B-87EE-DF2D42A7A586}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		Plan.txt = Plan.txt
 	EndProjectSection
 EndProject
@@ -26,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.API", "Services\Pr
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4439AE8F-EA97-44E5-B33F-0C750B4DB403}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reviews", "Reviews", "{4AED452A-526C-4100-9105-741B7B432F6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reviews.API", "Services\Reviews\Reviews.API\Reviews.API.csproj", "{2A727C8A-A2E8-4027-88EE-E651A4E8D3A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +49,10 @@ Global
 		{4439AE8F-EA97-44E5-B33F-0C750B4DB403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4439AE8F-EA97-44E5-B33F-0C750B4DB403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4439AE8F-EA97-44E5-B33F-0C750B4DB403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A727C8A-A2E8-4027-88EE-E651A4E8D3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A727C8A-A2E8-4027-88EE-E651A4E8D3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A727C8A-A2E8-4027-88EE-E651A4E8D3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A727C8A-A2E8-4027-88EE-E651A4E8D3A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +65,8 @@ Global
 		{EFC0E452-479B-4E28-81C3-B544149624BD} = {1C443CC2-DE82-460E-9634-953C6FDDE41D}
 		{79DF53C9-06EB-4A27-8418-F17B26A12E09} = {75B07721-0E71-4D31-8F38-BE4AB754A7A6}
 		{75791BEA-2CFD-4115-A945-DE343241F55C} = {79DF53C9-06EB-4A27-8418-F17B26A12E09}
+		{4AED452A-526C-4100-9105-741B7B432F6C} = {75B07721-0E71-4D31-8F38-BE4AB754A7A6}
+		{2A727C8A-A2E8-4027-88EE-E651A4E8D3A9} = {4AED452A-526C-4100-9105-741B7B432F6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2B15AD1-8CE8-4CBC-B90B-72A9B0CB9F5C}

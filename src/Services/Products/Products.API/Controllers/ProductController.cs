@@ -7,7 +7,7 @@ using Products.API.Core.Queries.Products;
 namespace Products.API.Controllers
 {
     [ApiController]
-    [Route("api/v1/product")]
+    [Route("api/v1/products")]
     public class ProductController : ControllerBase
     {
         private readonly ILogger<ProductController> _logger;

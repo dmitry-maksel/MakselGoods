@@ -2,7 +2,7 @@
 
 namespace Identity.API.Extensions
 {
-    public static class ServiceInstsallerExtensions
+    public static class ServiceInstallerExtensions
     {
         public static void InstallServicesInAssembly(this IServiceCollection services, IConfiguration configuration)
         {

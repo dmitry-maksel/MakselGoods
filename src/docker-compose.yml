@@ -3,10 +3,6 @@ services:
     build:
       context: .
       dockerfile: Services/Identity/Identity.API/Dockerfile
-    # ports:
-    #   - "5051:80"
-    # environment:
-    #   - ASPNETCORE_ENVIRONMENT=Development
     networks:
       - mynetwork
 
@@ -14,10 +10,13 @@ services:
     build:
       context: .
       dockerfile: Services/Products/Products.API/Dockerfile
-    # ports:
-    #   - "5052:80"
-    # environment:
-    #   - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - mynetwork
+
+  reviews.api:
+    build:
+      context: .
+      dockerfile: Services/Reviews/Reviews.API/Dockerfile
     networks:
       - mynetwork
 
