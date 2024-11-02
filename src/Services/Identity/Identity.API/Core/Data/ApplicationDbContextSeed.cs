@@ -2,7 +2,7 @@
 
 namespace Identity.API.Core.Data
 {
-    public class ApplicationDbContextSeed
+    public static class ApplicationDbContextSeed
     {
         public static async Task SeedDataAsync(UserManager<ApplicationUser> userManager)
         {
