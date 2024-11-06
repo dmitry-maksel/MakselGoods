@@ -1,8 +1,23 @@
 services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: strong_user
+      RABBITMQ_DEFAULT_PASS: strong_password
+    networks:
+      - mynetwork
+
   identity.api:
     build:
       context: .
       dockerfile: Services/Identity/Identity.API/Dockerfile
+    depends_on:
+      - rabbitmq
     networks:
       - mynetwork
 
@@ -10,6 +25,8 @@ services:
     build:
       context: .
       dockerfile: Services/Products/Products.API/Dockerfile
+    depends_on:
+      - rabbitmq
     networks:
       - mynetwork
 
@@ -17,6 +34,8 @@ services:
     build:
       context: .
       dockerfile: Services/Reviews/Reviews.API/Dockerfile
+    depends_on:
+      - rabbitmq
     networks:
       - mynetwork
 

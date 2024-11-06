@@ -32,4 +32,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MessageBroker\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\..\MessageBroker\RabbitMQ\RabbitMQ.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -3,6 +3,7 @@ using Identity.API.Core.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Identity.API.Controllers
 {
@@ -71,6 +72,18 @@ namespace Identity.API.Controllers
                 _logger.LogError(ex, "Error while Login process: {loginQuery}", signUpQuery);
                 throw;
             }
+        }
+
+        [Authorize]
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser(string displayName, CancellationToken cancellationToken)
+        {
+            var idClaim = User.Claims.First(x => x.Type == ClaimTypes.NameIdentifier);
+            var id = int.Parse(idClaim.Value);
+
+            var result = await _mediator.Send(new UpdateNameQuery(id, displayName), cancellationToken);
+
+            return result ? Ok() : BadRequest();
         }
 
         [HttpPost("testauth")]

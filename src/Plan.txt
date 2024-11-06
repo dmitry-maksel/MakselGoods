@@ -9,17 +9,19 @@ Enhancements list:
 
 TODO list:
   MAJOR
-    - Add Reviews microservice
+    - Add Reviews microservice +
     - Add ApiGateway for WebFrontEnd (Ocelot)
     - Grpc
     - RabbitMQ
     - K8s
   MINOR
+    - Retry Polly
+    - circuit breaker
     - Add WebFrontEnd with Angular
     - Add WebFrontEnd with React
     - SignalRHub
     - Use MongoDB
-    - Docker SQL with Migrations and seeds
+    - MSSQL Docker in with Migrations and seeds
     - background tasks (jobs)
     - web status of mservices
     - kaffka

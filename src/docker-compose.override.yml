@@ -1,4 +1,9 @@
 services:
+  rabbitmq:
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+
   identity.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

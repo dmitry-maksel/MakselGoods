@@ -24,8 +24,8 @@ namespace Identity.API.Infrastructure.Services
 
             var claims = new List<Claim>
             {
-                new(JwtRegisteredClaimNames.Name, user.UserName!),
-                new(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new(ClaimTypes.Name, user.UserName!),
+                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
             };
 
             var credentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256);
