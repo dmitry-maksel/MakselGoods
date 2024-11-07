@@ -20,7 +20,7 @@ TODO list:
     - Add WebFrontEnd with Angular
     - Add WebFrontEnd with React
     - SignalRHub
-    - Use MongoDB
+    - Use MongoDB for Event Sourcing i.e.
     - MSSQL Docker in with Migrations and seeds
     - background tasks (jobs)
     - web status of mservices
@@ -36,4 +36,6 @@ TODO list:
     - TDD
     - Swagger
     - secrets
+    - .env file
+    - Healthcheck
 

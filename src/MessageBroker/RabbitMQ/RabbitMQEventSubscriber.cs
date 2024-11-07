@@ -22,6 +22,7 @@ public class RabbitMQEventSubscriber : IEventSubscriber
             {
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();
+                //_channel.BasicQos(0, 1, false); // prefetchSize
                 break;
             }
             catch (BrokerUnreachableException ex)
@@ -45,20 +46,34 @@ public class RabbitMQEventSubscriber : IEventSubscriber
         var queueName = typeof(T).Name;
         _channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
 
-        var consumer = new AsyncEventingBasicConsumer(_channel);
+        var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += async (model, ea) =>
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            var @event = JsonSerializer.Deserialize<T>(message);
 
-            if (@event != null)
+            try
             {
-                await onMessage(@event);
+                var @event = JsonSerializer.Deserialize<T>(message);
+
+                if (@event != null)
+                {
+                    await onMessage(@event);
+                }
             }
+            catch (Exception ex)
+            {
+                _channel.BasicReject()
+                _logger.LogWarning(ex, "----- Error processing message:{message}", message);
+            }
+            finally
+            {
+                _channel.BasicAck(ea.DeliveryTag, false);
+            }
+
         };
 
-        _channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
+        _channel.BasicConsume(queue: queueName, autoAck: false, consumer: consumer);
     }
 
     public void Dispose()

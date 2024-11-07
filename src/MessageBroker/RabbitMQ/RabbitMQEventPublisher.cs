@@ -21,12 +21,12 @@ public class RabbitMQEventPublisher : IEventPublisher
     public Task PublishAsync<T>(T @event) where T : class
     {
         var queueName = typeof(T).Name;
-        _channel.QueueDeclare(queue: queueName, durable: false, autoDelete: false, exclusive: false, arguments: null);
+        //_channel.QueueDeclare(queue: queueName, durable: false, autoDelete: false, exclusive: false, arguments: null);
 
         var message = JsonSerializer.Serialize(@event);
         var body = Encoding.UTF8.GetBytes(message);
 
-        _channel.BasicPublish(exchange: "", routingKey: queueName, basicProperties: null, body: body);
+        _channel.BasicPublish(exchange: string.Empty, routingKey: queueName, basicProperties: null, body: body);
 
         return Task.CompletedTask;
     }
