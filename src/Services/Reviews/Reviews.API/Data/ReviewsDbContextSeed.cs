@@ -1,4 +1,7 @@
-﻿namespace Reviews.API.Core.Data
+﻿using Reviews.API.Core.Data;
+using Reviews.API.Core.Entities;
+
+namespace Reviews.API.Data
 {
     public static class ReviewsDbContextSeed
     {

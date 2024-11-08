@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Reviews.API.Core.Data;
-using Reviews.API.Core.Models;
 using Reviews.API.Core.Queries;
+using Reviews.API.Data;
+using Reviews.API.Models;
 
-namespace Reviews.API.Core.Handlers;
+namespace Reviews.API.Infrastructure.Handlers;
 
 public class GetReviewsByProductIdHandler : IRequestHandler<GetReviewByProductIdQuery, List<GetReviewResponseModel>>
 {
@@ -27,7 +27,7 @@ public class GetReviewsByProductIdHandler : IRequestHandler<GetReviewByProductId
         }
 
         var reviews = await _reviewsDbContext.Reviews
-            .Where(x => x.ProductId ==  request.ProductId)
+            .Where(x => x.ProductId == request.ProductId)
             .Select(x => new GetReviewResponseModel
             {
                 Id = x.Id,

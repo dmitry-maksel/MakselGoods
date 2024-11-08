@@ -2,7 +2,7 @@
 using EventBus.Abstractions;
 using RabbitMQ;
 using RabbitMQ.Client;
-using Reviews.API.IntegrationEvents.EventHandlers;
+using Reviews.API.Infrastructure.IntegrationEvents.EventHandlers;
 
 namespace Reviews.API.ServicesInstallers;
 

@@ -1,4 +1,4 @@
-﻿using Reviews.API.Core.Data;
+﻿using Reviews.API.Data;
 
 namespace Reviews.API.Extensions
 {

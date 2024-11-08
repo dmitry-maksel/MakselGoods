@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using Reviews.API.Core.Data;
+using Reviews.API.Data;
 using System.Reflection;
 
 namespace Reviews.API.ServicesInstallers

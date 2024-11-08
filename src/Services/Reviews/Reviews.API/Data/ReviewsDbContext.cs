@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Reviews.API.Core.Entities;
 
-namespace Reviews.API.Core.Data
+namespace Reviews.API.Data
 {
-    public class ReviewsDbContext: DbContext
+    public class ReviewsDbContext : DbContext
     {
         public DbSet<Review> Reviews { get; set; }
 

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Reviews.API.Core.Entities;
 
-namespace Reviews.API.Core.Data.Configurations
+namespace Reviews.API.Data.Configurations
 {
     public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
     {

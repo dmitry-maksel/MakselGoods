@@ -1,4 +1,4 @@
-﻿namespace Reviews.API.Core.Data;
+﻿namespace Reviews.API.Core.Entities;
 
 public class User
 {

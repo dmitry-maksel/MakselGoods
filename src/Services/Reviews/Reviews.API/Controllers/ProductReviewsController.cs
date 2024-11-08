@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Reviews.API.Core.Models;
 using Reviews.API.Core.Queries;
+using Reviews.API.Models;
 
 namespace Reviews.API.Controllers
 {

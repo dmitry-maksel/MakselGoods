@@ -1,6 +1,6 @@
 ﻿using EventBus.Abstractions;
 
-namespace Reviews.API.IntegrationEvents.Events;
+namespace Reviews.API.Infrastructure.IntegrationEvents.Events;
 
 public class DisplayNameChangedEvent : IEvent
 {

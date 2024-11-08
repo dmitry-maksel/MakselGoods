@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Reviews.API.Core.Data;
 using Reviews.API.Core.Queries;
+using Reviews.API.Data;
 
-namespace Reviews.API.Core.Handlers;
+namespace Reviews.API.Infrastructure.Handlers;
 
 public class CreateReviewHandler : IRequestHandler<CreateReviewQuery, int>
 {

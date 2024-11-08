@@ -63,7 +63,6 @@ public class RabbitMQEventSubscriber : IEventSubscriber
             }
             catch (Exception ex)
             {
-                _channel.BasicReject()
                 _logger.LogWarning(ex, "----- Error processing message:{message}", message);
             }
             finally

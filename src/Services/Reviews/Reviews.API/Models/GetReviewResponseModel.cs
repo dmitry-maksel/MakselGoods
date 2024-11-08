@@ -1,4 +1,4 @@
-﻿namespace Reviews.API.Core.Models
+﻿namespace Reviews.API.Models
 {
     public class GetReviewResponseModel
     {

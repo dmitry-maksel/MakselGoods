@@ -1,9 +1,9 @@
 ﻿using EventBus.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Reviews.API.Core.Data;
-using Reviews.API.IntegrationEvents.Events;
+using Reviews.API.Data;
+using Reviews.API.Infrastructure.IntegrationEvents.Events;
 
-namespace Reviews.API.IntegrationEvents.EventHandlers;
+namespace Reviews.API.Infrastructure.IntegrationEvents.EventHandlers;
 
 public class DisplayNameChangedEventHandler : IEventHandler<DisplayNameChangedEvent>
 {

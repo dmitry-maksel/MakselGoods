@@ -1,7 +1,7 @@
 using EventBus.Abstractions;
 using Reviews.API.Extensions;
-using Reviews.API.IntegrationEvents.EventHandlers;
-using Reviews.API.IntegrationEvents.Events;
+using Reviews.API.Infrastructure.IntegrationEvents.EventHandlers;
+using Reviews.API.Infrastructure.IntegrationEvents.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Reviews.API.Core.Models;
+using Reviews.API.Models;
 
 namespace Reviews.API.Core.Queries;
 public record GetReviewByProductIdQuery(int ProductId) : IRequest<List<GetReviewResponseModel>>;
