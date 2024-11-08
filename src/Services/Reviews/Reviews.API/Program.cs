@@ -1,7 +1,7 @@
 using EventBus.Abstractions;
+using Reviews.API.Core.Events;
 using Reviews.API.Extensions;
 using Reviews.API.Infrastructure.IntegrationEvents.EventHandlers;
-using Reviews.API.Infrastructure.IntegrationEvents.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +33,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// TODO Enhance Event Subscribing
 var eventSubscriber = app.Services.GetRequiredService<IEventSubscriber>();
 
 var handler = app.Services.GetRequiredService<DisplayNameChangedEventHandler>();

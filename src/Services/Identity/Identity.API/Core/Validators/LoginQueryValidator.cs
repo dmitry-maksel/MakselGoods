@@ -3,7 +3,7 @@ using Identity.API.Core.Queries;
 
 namespace Identity.API.Core.Validators
 {
-    public class LoginQueryValidator : AbstractValidator<LoginQuery>
+    public class LoginQueryValidator : AbstractValidator<LoginCommand>
     {
         public LoginQueryValidator()
         {

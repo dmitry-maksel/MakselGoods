@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Identity.API.Core.Handlers
 {
-    public class LoginHandler : IRequestHandler<LoginQuery, LoginResponseModel>
+    public class LoginHandler : IRequestHandler<LoginCommand, LoginResponseModel>
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -22,7 +22,7 @@ namespace Identity.API.Core.Handlers
             _userManager = userManager;
             _tokenGenerator = tokenGenerator;
         }
-        public async Task<LoginResponseModel> Handle(LoginQuery request, CancellationToken cancellationToken)
+        public async Task<LoginResponseModel> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 

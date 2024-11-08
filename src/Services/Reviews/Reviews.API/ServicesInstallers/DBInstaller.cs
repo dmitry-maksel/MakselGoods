@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Reviews.API.Core.Interfaces;
 using Reviews.API.Data;
+using Reviews.API.Infrastructure.Implementaions;
 using System.Reflection;
 
 namespace Reviews.API.ServicesInstallers
@@ -21,6 +23,8 @@ namespace Reviews.API.ServicesInstallers
                             errorNumbersToAdd: null);
                     });
             });
+
+            services.AddScoped<IReviewRepository, ReviewRepository>();
         }
     }
 }

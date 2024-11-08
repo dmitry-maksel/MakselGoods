@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Identity.API.Core.Handlers
 {
-    public class SignUpHandler : IRequestHandler<SignUpQuery, int>
+    public class SignUpHandler : IRequestHandler<SignUpCommand, int>
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -14,7 +14,7 @@ namespace Identity.API.Core.Handlers
             _userManager = userManager;
         }
 
-        public async Task<int> Handle(SignUpQuery request, CancellationToken cancellationToken)
+        public async Task<int> Handle(SignUpCommand request, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 

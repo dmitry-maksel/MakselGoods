@@ -22,7 +22,7 @@ namespace Identity.API.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginQuery loginQuery, IValidator<LoginQuery> validator)
+        public async Task<IActionResult> Login([FromBody] LoginCommand loginQuery, IValidator<LoginCommand> validator)
         {
             _logger.LogInformation($"{DateTime.UtcNow} || {nameof(Login)} started");
 
@@ -49,7 +49,7 @@ namespace Identity.API.Controllers
 
         [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> SignUp([FromBody] SignUpQuery signUpQuery, IValidator<SignUpQuery> validator)
+        public async Task<IActionResult> SignUp([FromBody] SignUpCommand signUpQuery, IValidator<SignUpCommand> validator)
         {
             _logger.LogInformation($"{DateTime.UtcNow} || {nameof(SignUp)} started");
 
@@ -81,7 +81,7 @@ namespace Identity.API.Controllers
             var idClaim = User.Claims.First(x => x.Type == ClaimTypes.NameIdentifier);
             var id = int.Parse(idClaim.Value);
 
-            var result = await _mediator.Send(new UpdateNameQuery(id, displayName), cancellationToken);
+            var result = await _mediator.Send(new UpdateNameCommand(id, displayName), cancellationToken);
 
             return result ? Ok() : BadRequest();
         }

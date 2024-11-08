@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Reviews.API.Core.Queries;
+using Reviews.API.Core.CQRS.Commands;
+using Reviews.API.Core.CQRS.Queries;
 using Reviews.API.Models;
 
 namespace Reviews.API.Controllers
@@ -29,7 +30,7 @@ namespace Reviews.API.Controllers
         [HttpPost("{productId}/reviews")]
         public async Task<IActionResult> Create(int productId, [FromBody] CreateReviewRequestModel model, CancellationToken cancellationToken)
         {
-            var id = await _mediator.Send(new CreateReviewQuery(productId, model.UserId, model.Rating, model.Text), cancellationToken);
+            var id = await _mediator.Send(new CreateReviewCommand(productId, model.UserId, model.Rating, model.Text), cancellationToken);
 
             return Ok(id);
         }

@@ -32,7 +32,7 @@ namespace Reviews.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Reviews.API.Core.Data.Review", b =>
@@ -72,7 +72,7 @@ namespace Reviews.API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Reviews.API.Core.Data.User", b =>
@@ -86,7 +86,7 @@ namespace Reviews.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Reviews.API.Core.Data.Review", b =>

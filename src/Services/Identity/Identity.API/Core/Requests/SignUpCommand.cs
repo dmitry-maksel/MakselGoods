@@ -2,7 +2,7 @@
 
 namespace Identity.API.Core.Queries
 {
-    public record SignUpQuery(
+    public record SignUpCommand(
         string DisplayName,
         string UserName,
         string Email,

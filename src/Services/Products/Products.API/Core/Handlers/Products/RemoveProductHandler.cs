@@ -24,7 +24,7 @@ namespace Products.API.Core.Handlers.Products
                 return false;
             }
 
-            _dbContext.Products.Remove(product);
+            product.DeletedAt = DateTimeOffset.UtcNow;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

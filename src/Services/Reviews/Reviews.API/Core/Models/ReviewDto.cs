@@ -1,6 +1,6 @@
 ﻿namespace Reviews.API.Models
 {
-    public class GetReviewResponseModel
+    public class ReviewDto
     {
         public int Id { get; set; }
 

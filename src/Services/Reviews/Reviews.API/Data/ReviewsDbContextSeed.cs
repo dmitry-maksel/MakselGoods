@@ -1,5 +1,4 @@
-﻿using Reviews.API.Core.Data;
-using Reviews.API.Core.Entities;
+﻿using Reviews.API.Core.Entities;
 
 namespace Reviews.API.Data
 {

@@ -6,7 +6,7 @@ Enhancements list:
         - Add details
         - ...
     - JWT Auth
-
+    - Prettify Identity and Products
 TODO list:
   MAJOR
     - Add Reviews microservice +

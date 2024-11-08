@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Identity.API.Core.Handlers;
 
-public class UpdateNameHandler : IRequestHandler<UpdateNameQuery, bool>
+public class UpdateNameHandler : IRequestHandler<UpdateNameCommand, bool>
 {
     private readonly ILogger<UpdateNameHandler> _logger;
     private readonly ApplicationDbContext _context;
@@ -20,7 +20,7 @@ public class UpdateNameHandler : IRequestHandler<UpdateNameQuery, bool>
         _eventPublisher = eventPublisher;
     }
 
-    public async Task<bool> Handle(UpdateNameQuery request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(UpdateNameCommand request, CancellationToken cancellationToken)
     {
         var user = await _context.Users.SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken: cancellationToken);
 

@@ -4,7 +4,7 @@ using Identity.API.Extensions;
 
 namespace Identity.API.Core.Validators
 {
-    public class SignUpQueryValidator : AbstractValidator<SignUpQuery>
+    public class SignUpQueryValidator : AbstractValidator<SignUpCommand>
     {
         public SignUpQueryValidator()
         {

@@ -33,9 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reviews.API", "Services\Rev
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBroker", "MessageBroker", "{6D513618-33C6-492E-9457-073B769C67F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "MessageBroker\EventBus\EventBus.csproj", "{A14C3BFC-ACC7-41A5-850F-B6EA0EC90B14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "MessageBroker\EventBus\EventBus.csproj", "{A14C3BFC-ACC7-41A5-850F-B6EA0EC90B14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ", "MessageBroker\RabbitMQ\RabbitMQ.csproj", "{28B441DA-B14A-483F-AA4B-EEA5DE1DFB6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ", "MessageBroker\RabbitMQ\RabbitMQ.csproj", "{28B441DA-B14A-483F-AA4B-EEA5DE1DFB6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

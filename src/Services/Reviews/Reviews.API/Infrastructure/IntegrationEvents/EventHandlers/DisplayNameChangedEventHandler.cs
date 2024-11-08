@@ -1,7 +1,7 @@
 ﻿using EventBus.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using Reviews.API.Core.Events;
 using Reviews.API.Data;
-using Reviews.API.Infrastructure.IntegrationEvents.Events;
 
 namespace Reviews.API.Infrastructure.IntegrationEvents.EventHandlers;
 
