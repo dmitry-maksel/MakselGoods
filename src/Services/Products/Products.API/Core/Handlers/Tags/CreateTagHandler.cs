@@ -25,7 +25,7 @@ namespace Products.API.Core.Handlers.Tags
                 Name = request.Name
             };
 
-            await _context.Tags.AddAsync(tag, cancellationToken);
+            _context.Tags.Add(tag);
             await _context.SaveChangesAsync(cancellationToken);
 
             return tag.Id;

@@ -1,37 +1,54 @@
 ﻿using EventBus.Abstractions;
 using Microsoft.Extensions.Logging;
+using Polly;
+using Polly.Retry;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 
 namespace RabbitMQ;
 public class RabbitMQEventSubscriber : IEventSubscriber
 {
-    private readonly IConnection _connection;
-    private readonly IModel _channel;
+    private IConnection _connection;
+    private IModel _channel;
     private readonly ILogger<RabbitMQEventSubscriber> _logger;
 
     public RabbitMQEventSubscriber(IConnectionFactory factory, ILogger<RabbitMQEventSubscriber> logger)
     {
-        int retryAttempts = 5;
-        while (retryAttempts > 0)
+        var pipeline = new ResiliencePipelineBuilder()
+            .AddRetry(new RetryStrategyOptions
+            {
+                ShouldHandle = new PredicateBuilder().Handle<BrokerUnreachableException>().Handle<SocketException>(),
+                Delay = TimeSpan.FromSeconds(3),
+                BackoffType = DelayBackoffType.Constant,
+                MaxRetryAttempts = 5,
+                OnRetry = (args) =>
+                {
+
+                    if (args.Outcome.Result is BrokerUnreachableException ex)
+                    {
+                        logger.LogError(ex, "RabbitMQ not available. Trying to connect...");
+                    }
+
+                    if (args.Outcome.Result is SocketException socketEx)
+                    {
+                        logger.LogError(socketEx, "RabbitMQ not available. Trying to connect...");
+                    }
+
+                    return ValueTask.CompletedTask;
+                }
+            })
+            .Build();
+
+        pipeline.Execute(() =>
         {
-            try
-            {
-                _connection = factory.CreateConnection();
-                _channel = _connection.CreateModel();
-                //_channel.BasicQos(0, 1, false); // prefetchSize
-                break;
-            }
-            catch (BrokerUnreachableException ex)
-            {
-                logger.LogError(ex, "RabbitMQ not available. Trying to connect...");
-                retryAttempts--;
-                Thread.Sleep(2000);
-            }
-        }
+            _connection = factory.CreateConnection();
+            _channel = _connection.CreateModel();
+        });
+
 
         if (_connection == null || _channel == null)
         {
@@ -47,6 +64,7 @@ public class RabbitMQEventSubscriber : IEventSubscriber
         _channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
 
         var consumer = new EventingBasicConsumer(_channel);
+
         consumer.Received += async (model, ea) =>
         {
             var body = ea.Body.ToArray();

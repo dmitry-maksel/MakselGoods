@@ -22,7 +22,7 @@ namespace Products.API.Core.Handlers.Products
                 ModifiedAt = DateTimeOffset.UtcNow
             };
 
-            await _dbContext.Products.AddAsync(product, cancellationToken);
+            _dbContext.Products.Add(product);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return product.Id;

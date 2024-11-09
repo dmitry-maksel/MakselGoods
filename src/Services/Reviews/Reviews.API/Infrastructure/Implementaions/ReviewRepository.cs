@@ -19,7 +19,7 @@ public class ReviewRepository : IReviewRepository
     {
         ArgumentNullException.ThrowIfNull(review, nameof(review));
 
-        await _context.AddAsync(review, cancellationToken);
+        _context.Add(review);
         await _context.SaveChangesAsync(cancellationToken);
 
         return review.Id;
