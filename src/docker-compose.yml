@@ -39,6 +39,16 @@ services:
     networks:
       - mynetwork
 
+  web.bff:
+    build:
+      context: .
+      dockerfile: ApiGetaways/Web.BFF/Dockerfile
+    depends_on:
+      - reviews.api
+      - products.api
+    networks:
+      - mynetwork
+
 networks:
   mynetwork:
     driver: bridge

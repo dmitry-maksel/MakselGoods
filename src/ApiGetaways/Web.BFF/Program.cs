@@ -1,3 +1,6 @@
+using Web.BFF;
+using Web.BFF.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var reviewsApiUrl = Environment.GetEnvironmentVariable("REVIEWS_API_URL") 
+                    ?? "http://localhost:5053";
+
+builder.Services.AddGrpcClient<Reviews.ReviewsClient>(o =>
+{
+    o.Address = new Uri(reviewsApiUrl);
+});
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.WebHost.ConfigureKestrel(opts =>
 {

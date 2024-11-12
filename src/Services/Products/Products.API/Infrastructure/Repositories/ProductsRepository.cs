@@ -6,11 +6,11 @@ using Products.API.Data;
 
 namespace Products.API.Infrastructure.Repositories;
 
-public class ProductRepository : IProductsRepository
+public class ProductsRepository : IProductsRepository
 {
     private readonly ProductsDbContext _context;
 
-    public ProductRepository(ProductsDbContext context)
+    public ProductsRepository(ProductsDbContext context)
     {
         _context = context;
     }

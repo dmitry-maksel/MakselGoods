@@ -26,5 +26,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__Default=Server=host.docker.internal,1433;Database=mg_reviews;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
+      - IsDockerRun=True
     ports:
       - "5053:80"
+      - "5553:81"
+
+  web.bff:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - REVIEWS_API_URL=http://reviews.api:81
+    ports:
+      - "5000:80"

@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Products.API.Core.Interfaces;
 using Products.API.Data;
+using Products.API.Infrastructure.Repositories;
 using System.Reflection;
 using System.Text;
 
@@ -89,6 +91,8 @@ builder.WebHost.ConfigureKestrel(opts =>
 {
     opts.ListenAnyIP(80);
 });
+
+builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 
 var app = builder.Build();
 
