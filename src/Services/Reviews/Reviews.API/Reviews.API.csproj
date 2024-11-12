@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\Validators\" />
+    <Folder Include="Protos\" />
   </ItemGroup>
 
   <ItemGroup>
