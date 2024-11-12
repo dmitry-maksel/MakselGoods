@@ -2,7 +2,8 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Products.API.Core.Queries.Products;
+using Products.API.Core.CQRS.Commands;
+using Products.API.Core.CQRS.Queries;
 
 namespace Products.API.Controllers
 {
@@ -58,7 +59,7 @@ namespace Products.API.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductQuery query, IValidator<CreateProductQuery> validator)
+        public async Task<IActionResult> Create(CreateProductCommand query, IValidator<CreateProductCommand> validator)
         {
             _logger.LogInformation($"{nameof(Create)} method executed");
 
@@ -85,7 +86,7 @@ namespace Products.API.Controllers
 
         [Authorize]
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductQuery query, IValidator<UpdateProductQuery> validator)
+        public async Task<IActionResult> Update(UpdateProductCommand query, IValidator<UpdateProductCommand> validator)
         {
             _logger.LogInformation($"{nameof(Update)} method executed");
 
@@ -118,7 +119,7 @@ namespace Products.API.Controllers
 
             try
             {
-                var result = await _mediator.Send(new RemoveProductQuery { Id = id });
+                var result = await _mediator.Send(new RemoveProductCommand { Id = id });
 
                 return result ? Ok(result) : NotFound();
             }

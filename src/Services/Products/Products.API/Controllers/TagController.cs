@@ -1,7 +1,8 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Products.API.Core.Queries.Tags;
+using Products.API.Core.CQRS.Commands;
+using Products.API.Core.CQRS.Queries;
 
 namespace Products.API.Controllers
 {
@@ -56,7 +57,7 @@ namespace Products.API.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Create(CreateTagQuery query, IValidator<CreateTagQuery> validator)
+        public async Task<IActionResult> Create(CreateTagCommand query, IValidator<CreateTagCommand> validator)
         {
             _logger.LogInformation("{action} method executed", nameof(Create));
 
@@ -83,7 +84,7 @@ namespace Products.API.Controllers
 
         [Authorize]
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateTagQuery query, IValidator<UpdateTagQuery> validator)
+        public async Task<IActionResult> Update(UpdateTagCommand query, IValidator<UpdateTagCommand> validator)
         {
             _logger.LogInformation("{action} method executed", nameof(Update));
 
@@ -116,7 +117,7 @@ namespace Products.API.Controllers
 
             try
             {
-                var result = await _mediator.Send(new RemoveTagQuery(id));
+                var result = await _mediator.Send(new RemoveTagCommand(id));
 
                 return result ? Ok() : NotFound();
             }

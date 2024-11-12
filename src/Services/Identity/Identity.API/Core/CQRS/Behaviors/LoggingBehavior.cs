@@ -1,5 +1,6 @@
 ﻿using Identity.API.Core.Interfaces;
 using MediatR;
+using System.Diagnostics;
 
 namespace Identity.API.Core.CQRS.Behaviors
 {
@@ -7,10 +8,12 @@ namespace Identity.API.Core.CQRS.Behaviors
         where TRequest : notnull, ILoggedRequest
     {
         private readonly ILogger _logger;
+        private readonly Stopwatch _stopwatch;
 
         public LoggingBehavior(ILoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger("LoggingBehavior");
+            _stopwatch = new Stopwatch();
         }
 
         public async Task<TResponse> Handle(
@@ -20,13 +23,22 @@ namespace Identity.API.Core.CQRS.Behaviors
         {
             try
             {
-                _logger.LogInformation($"Before execution for {typeof(TRequest).Name};\nStarted at: {DateTime.UtcNow}");
+                _stopwatch.Start();
+                _logger.LogInformation(
+                    "{startTime}::Before execution for {requestName}",
+                    DateTime.UtcNow,
+                    typeof(TRequest).Name);
 
                 return await next();
             }
             finally
             {
-                _logger.LogInformation(@$"After execution for {typeof(TRequest).Name}\nCompleted at: {DateTime.UtcNow}");
+                _stopwatch.Stop();
+                _logger.LogInformation(
+                    "{startTime}::After execution for {requestName}; Request lasted:{timeTaken}ms",
+                    DateTime.UtcNow,
+                    typeof(TRequest).Name,
+                    _stopwatch.ElapsedMilliseconds);
             }
         }
     }

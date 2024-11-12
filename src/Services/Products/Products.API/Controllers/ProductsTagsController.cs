@@ -1,7 +1,8 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Products.API.Core.Queries;
+using Products.API.Core.CQRS.Commands;
+using Products.API.Core.CQRS.Queries;
 
 namespace Products.API.Controllers
 {
@@ -20,7 +21,7 @@ namespace Products.API.Controllers
         }
 
         [HttpPost("product/add-tags")]
-        public async Task<IActionResult> AssignTagsToProduct(AddTagsToProductQuery query, IValidator<AddTagsToProductQuery> validator, CancellationToken cancellationToken)
+        public async Task<IActionResult> AssignTagsToProduct(AddTagsToProductCommand query, IValidator<AddTagsToProductCommand> validator, CancellationToken cancellationToken)
         {
             var validationResult = validator.Validate(query);
 
