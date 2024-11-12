@@ -1,13 +1,12 @@
-﻿using Identity.API.Core.Data;
+﻿using Identity.API.Core.Entities;
+using Identity.API.Core.Interfaces;
 using Identity.API.Core.Models;
-using Identity.API.Core.Queries;
-using Identity.API.Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace Identity.API.Core.Handlers
+namespace Identity.API.Core.CQRS.Commands.Login
 {
-    public class LoginHandler : IRequestHandler<LoginCommand, LoginResponseModel>
+    public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -22,7 +21,7 @@ namespace Identity.API.Core.Handlers
             _userManager = userManager;
             _tokenGenerator = tokenGenerator;
         }
-        public async Task<LoginResponseModel> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<LoginDto> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -39,7 +38,7 @@ namespace Identity.API.Core.Handlers
 
             var token = _tokenGenerator.GenerateToken(user);
 
-            return new LoginResponseModel(token);
+            return new LoginDto(token);
         }
     }
 }

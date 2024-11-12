@@ -1,6 +1,6 @@
 ﻿
 using FluentValidation;
-using Identity.API.Core.Validators;
+using Identity.API.Core.CQRS.Commands.Login;
 
 namespace Identity.API.ServiceInstallers
 {

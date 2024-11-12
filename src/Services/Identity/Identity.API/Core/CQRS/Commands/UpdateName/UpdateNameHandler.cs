@@ -1,11 +1,10 @@
 ﻿using EventBus.Abstractions;
-using Identity.API.Core.Data;
-using Identity.API.Core.Queries;
+using Identity.API.Data;
 using Identity.API.IntegrationEvents.Events;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Identity.API.Core.Handlers;
+namespace Identity.API.Core.CQRS.Commands.UpdateName;
 
 public class UpdateNameHandler : IRequestHandler<UpdateNameCommand, bool>
 {
@@ -32,7 +31,7 @@ public class UpdateNameHandler : IRequestHandler<UpdateNameCommand, bool>
         user.DisplayName = request.DisplayName;
         await _context.SaveChangesAsync(cancellationToken);
 
-        await _eventPublisher.PublishAsync(new DisplayNameChangedEvent { UserId =  user.Id, DisplayName = user.DisplayName });
+        await _eventPublisher.PublishAsync(new DisplayNameChangedEvent { UserId = user.Id, DisplayName = user.DisplayName });
 
         return true;
     }

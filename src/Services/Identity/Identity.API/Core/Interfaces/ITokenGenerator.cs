@@ -1,6 +1,6 @@
-﻿using Identity.API.Core.Data;
+﻿using Identity.API.Core.Entities;
 
-namespace Identity.API.Infrastructure.Services
+namespace Identity.API.Core.Interfaces
 {
     public interface ITokenGenerator
     {

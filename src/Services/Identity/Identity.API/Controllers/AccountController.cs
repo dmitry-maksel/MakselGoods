@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
-using Identity.API.Core.Queries;
+using Identity.API.Core.CQRS.Commands.Login;
+using Identity.API.Core.CQRS.Commands.SignUp;
+using Identity.API.Core.CQRS.Commands.UpdateName;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

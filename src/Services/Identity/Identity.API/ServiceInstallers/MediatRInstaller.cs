@@ -1,5 +1,4 @@
-﻿
-using Identity.API.Core.Behaviors;
+﻿using Identity.API.Core.CQRS.Behaviors;
 using MediatR;
 
 namespace Identity.API.ServiceInstallers;

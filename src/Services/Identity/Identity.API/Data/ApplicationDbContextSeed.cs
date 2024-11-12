@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Identity.API.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 
-namespace Identity.API.Core.Data
+namespace Identity.API.Data
 {
     public static class ApplicationDbContextSeed
     {

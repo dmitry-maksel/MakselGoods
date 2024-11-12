@@ -1,9 +1,8 @@
-﻿using Identity.API.Core.Data;
-using Identity.API.Core.Queries;
+﻿using Identity.API.Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace Identity.API.Core.Handlers
+namespace Identity.API.Core.CQRS.Commands.SignUp
 {
     public class SignUpHandler : IRequestHandler<SignUpCommand, int>
     {

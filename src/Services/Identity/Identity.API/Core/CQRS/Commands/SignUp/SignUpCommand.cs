@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using Identity.API.Core.Interfaces;
+using MediatR;
 
-namespace Identity.API.Core.Queries
+namespace Identity.API.Core.CQRS.Commands.SignUp
 {
     public record SignUpCommand(
         string DisplayName,

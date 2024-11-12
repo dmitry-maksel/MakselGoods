@@ -1,3 +1,4 @@
+using Identity.API.Core.Interfaces;
 using Identity.API.Extensions;
 using Identity.API.Infrastructure.Services;
 
@@ -34,7 +35,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -1,7 +1,7 @@
-﻿using Identity.API.Core.Queries;
+﻿using Identity.API.Core.Interfaces;
 using MediatR;
 
-namespace Identity.API.Core.Behaviors
+namespace Identity.API.Core.CQRS.Behaviors
 {
     public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : notnull, ILoggedRequest
@@ -12,6 +12,7 @@ namespace Identity.API.Core.Behaviors
         {
             _logger = loggerFactory.CreateLogger("LoggingBehavior");
         }
+
         public async Task<TResponse> Handle(
             TRequest request,
             RequestHandlerDelegate<TResponse> next,

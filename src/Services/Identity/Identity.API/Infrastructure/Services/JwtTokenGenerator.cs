@@ -1,4 +1,5 @@
-﻿using Identity.API.Core.Data;
+﻿using Identity.API.Core.Entities;
+using Identity.API.Core.Interfaces;
 using Identity.API.Infrastructure.Settings;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

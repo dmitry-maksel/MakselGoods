@@ -1,4 +1,4 @@
-﻿namespace Identity.API.Core.Queries
+﻿namespace Identity.API.Core.Interfaces
 {
     public interface ILoggedRequest
     {

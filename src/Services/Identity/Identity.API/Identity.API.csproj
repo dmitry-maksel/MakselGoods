@@ -37,4 +37,8 @@
     <ProjectReference Include="..\..\..\MessageBroker\RabbitMQ\RabbitMQ.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\CQRS\Queries\" />
+  </ItemGroup>
+
 </Project>

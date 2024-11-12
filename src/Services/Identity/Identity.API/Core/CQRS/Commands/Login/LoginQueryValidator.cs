@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
-using Identity.API.Core.Queries;
 
-namespace Identity.API.Core.Validators
+namespace Identity.API.Core.CQRS.Commands.Login
 {
     public class LoginQueryValidator : AbstractValidator<LoginCommand>
     {

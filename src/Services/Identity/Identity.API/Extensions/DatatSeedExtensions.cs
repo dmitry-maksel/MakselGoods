@@ -1,4 +1,5 @@
-﻿using Identity.API.Core.Data;
+﻿using Identity.API.Core.Entities;
+using Identity.API.Data;
 using Microsoft.AspNetCore.Identity;
 
 namespace Identity.API.Extensions
