@@ -1,6 +1,6 @@
 ﻿using EventBus.Abstractions;
 
-namespace Identity.API.IntegrationEvents.Events;
+namespace Identity.API.Core.Events;
 
 public class DisplayNameChangedEvent : IEvent
 {

@@ -1,6 +1,6 @@
 ﻿using EventBus.Abstractions;
+using Identity.API.Core.Events;
 using Identity.API.Data;
-using Identity.API.IntegrationEvents.Events;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
