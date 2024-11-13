@@ -21,6 +21,7 @@ services:
       - ConnectionStrings__Default=Server=host.docker.internal,1433;Database=mg_products;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
     ports:
       - "5052:80"
+      - "5552:81"
 
   reviews.api:
     environment:
@@ -35,5 +36,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - REVIEWS_API_URL=http://reviews.api:81
+      - PRODUCTS_API_URL=http://products.api:81
     ports:
       - "5000:80"

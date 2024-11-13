@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-option csharp_namespace = "Web.BFF";
+option csharp_namespace = "Web.BFF.Protos";
 
 import "google/protobuf/timestamp.proto";
 
 package reviews;
 
-service Reviews {
+service GrpcReviews {
     rpc CreateReview (CreateReviewRequest) returns (CreateReviewReply);
 
     rpc GetReviewsByProductId (GetReviewsByProductIdRequest) returns (GetReviewsByProductidReply);

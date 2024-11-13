@@ -1,4 +1,4 @@
-using Web.BFF;
+using Web.BFF.Protos;
 using Web.BFF.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,9 +13,16 @@ builder.Services.AddSwaggerGen();
 var reviewsApiUrl = Environment.GetEnvironmentVariable("REVIEWS_API_URL") 
                     ?? "http://localhost:5053";
 
-builder.Services.AddGrpcClient<Reviews.ReviewsClient>(o =>
+var productsApiUrl = Environment.GetEnvironmentVariable("PRODUCTS_API_URL")
+                    ?? "http://localhost:5053";
+
+builder.Services.AddGrpcClient<GrpcReviews.GrpcReviewsClient>(o =>
 {
     o.Address = new Uri(reviewsApiUrl);
+});
+builder.Services.AddGrpcClient<GrpcProducts.GrpcProductsClient>(o =>
+{
+    o.Address = new Uri(productsApiUrl);
 });
 builder.Services.AddScoped<IProductService, ProductService>();
 

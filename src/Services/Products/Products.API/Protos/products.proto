@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "Products.API.Protos";
+
+import "google/protobuf/timestamp.proto";
+
+package products;
+
+service GrpcProducts {
+    rpc GetProduct (GetProductRequest) returns (GetProductReply);
+
+    rpc GetTagsByProductId (GetTagsByProductIdRequest) returns (GetTagsByProductIdReply);
+}
+
+message GetProductRequest {
+    int32 product_id = 1;
+}
+
+message GetProductReply {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp modified_at = 5;
+}
+
+message GetTagsByProductIdRequest {
+    int32 product_id = 1;
+}
+
+message GetTagsByProductIdReply {
+    repeated TagReply Tags = 1;
+}
+
+message TagReply {
+    int32 id = 1;
+    string name = 2;
+}

@@ -23,6 +23,8 @@ public interface IProductsRepository
 
     Task<TagDto?> GetTagById(int id, CancellationToken cancellationToken);
 
+    Task<List<TagDto>> GetTagsByProductId(int productId, CancellationToken cancellationToken);
+
     Task<int> CreateTag(Tag tag, CancellationToken cancellationToken);
 
     Task<bool> RemoveTag(int id, CancellationToken cancellationToken);

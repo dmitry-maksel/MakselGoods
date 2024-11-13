@@ -2,10 +2,11 @@
 using Grpc.Core;
 using Reviews.API.Core.Entities;
 using Reviews.API.Core.Interfaces;
+using Reviews.API.Protos;
 
 namespace Reviews.API.Grpc;
 
-public class ReviewsService : Reviews.ReviewsBase
+public class ReviewsService : GrpcReviews.GrpcReviewsBase
 {
     private readonly IReviewRepository _repository;
 

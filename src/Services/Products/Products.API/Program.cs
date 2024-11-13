@@ -1,10 +1,12 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Products.API.Core.Interfaces;
 using Products.API.Data;
+using Products.API.Grpc;
 using Products.API.Infrastructure.Repositories;
 using System.Reflection;
 using System.Text;
@@ -26,6 +28,8 @@ builder.Services.AddDbContext<ProductsDbContext>(options =>
                 errorNumbersToAdd: null);
         });
 });
+
+builder.Services.AddGrpc();
 
 builder.Services.AddMediatR(cfg =>
 {
@@ -90,6 +94,11 @@ builder.Services.AddAuthentication(opt =>
 builder.WebHost.ConfigureKestrel(opts =>
 {
     opts.ListenAnyIP(80);
+
+    opts.ListenAnyIP(81, o =>
+    {
+        o.Protocols = HttpProtocols.Http2;
+    });
 });
 
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
@@ -121,5 +130,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGrpcService<ProductsService>();
 
 app.Run();

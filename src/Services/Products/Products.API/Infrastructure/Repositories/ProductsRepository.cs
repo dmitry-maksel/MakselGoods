@@ -15,18 +15,6 @@ public class ProductsRepository : IProductsRepository
         _context = context;
     }
 
-    public async Task<bool> AddTagToProduct(int productId, int[] tagIds, CancellationToken cancellationToken)
-    {
-        var productTags = await _context.ProductsTags.Where(x => x.ProductId == productId).ToArrayAsync(cancellationToken);
-        _context.RemoveRange(productTags);
-        var newProductTags = tagIds.Select(id => new ProductTag { ProductId = productId, TagId = id });
-
-        _context.AddRange(newProductTags, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
-
-        return true;
-    }
-
     public async Task<int> CreateProduct(Product product, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
@@ -60,7 +48,19 @@ public class ProductsRepository : IProductsRepository
 
     public async Task<ProductDto?> GetProductById(int id, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        if (product is null) return default;
+
+        return new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            CreatedAt = product.CreatedAt,
+            ModifiedAt = product.ModifiedAt,
+            DeletedAt = product.DeletedAt
+        };
     }
 
     public async Task<List<ProductTag>> GetProductTags(int productId, CancellationToken cancellationToken)
@@ -78,6 +78,20 @@ public class ProductsRepository : IProductsRepository
     public async Task<TagDto?> GetTagById(int id, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<List<TagDto>> GetTagsByProductId(int productId, CancellationToken cancellationToken)
+    {
+        var tags = await _context.ProductsTags
+            .Where(x => x.ProductId == productId)
+            .Select(x => new TagDto
+            {
+                Id = x.TagId,
+                Name = x.Tag.Name
+            })
+            .ToListAsync(cancellationToken);
+
+        return tags;
     }
 
     public async Task RemoveProductTagsByProductId(int productId, CancellationToken cancellationToken)
