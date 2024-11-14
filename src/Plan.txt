@@ -9,13 +9,15 @@ Enhancements list:
     - Prettify Identity and Products
 TODO list:
   MAJOR
-    - Add Reviews microservice +
-    - Add ApiGateway for WebFrontEnd (Ocelot)
-    - Grpc
-    - RabbitMQ
+    + Add Reviews microservice
+    + Add ApiGateway for WebFrontEnd (Ocelot)
+    + Grpc
+    + RabbitMQ
     - K8s
   MINOR
-    - Retry Polly
+    - Retry Polly +
+    - Polly other methods
+    - Grpc Auth
     - circuit breaker
     - Add WebFrontEnd with Angular
     - Add WebFrontEnd with React

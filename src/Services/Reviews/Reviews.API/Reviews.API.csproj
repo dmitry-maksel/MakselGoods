@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Protobuf Include="Protos\reviews.proto" GrpcServices="Server" />
   </ItemGroup>
 

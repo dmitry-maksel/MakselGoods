@@ -1,3 +1,5 @@
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 using Web.BFF.Protos;
 using Web.BFF.Services;
 
@@ -10,11 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var reviewsApiUrl = Environment.GetEnvironmentVariable("REVIEWS_API_URL") 
-                    ?? "http://localhost:5053";
+var reviewsApiUrl = builder.Configuration["REVIEWS_API_URL"]
+                    ?? throw new NullReferenceException("REVIEWS_API_URL is not defined");
 
-var productsApiUrl = Environment.GetEnvironmentVariable("PRODUCTS_API_URL")
-                    ?? "http://localhost:5053";
+var productsApiUrl = builder.Configuration["PRODUCTS_API_URL"]
+                    ?? throw new NullReferenceException("PRODUCTS_API_URL is not defined");
 
 builder.Services.AddGrpcClient<GrpcReviews.GrpcReviewsClient>(o =>
 {
@@ -31,6 +33,9 @@ builder.WebHost.ConfigureKestrel(opts =>
     opts.ListenAnyIP(80);
 });
 
+builder.Services.AddOcelot();
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,5 +50,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+await app.UseOcelot();
 
 app.Run();

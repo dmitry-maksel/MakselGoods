@@ -16,10 +16,12 @@ public class ProductService : IProductService
 
     public async Task<ProductDetails> GetProductDetails(int productId, CancellationToken cancellationToken)
     {
-        var product = await GetProduct(productId);
-        var tags = await GetTags(productId);
-        var reviews = await GetReviews(productId);
-        var details = new ProductDetails(product, tags, reviews);
+        var getProductTask =  GetProduct(productId);
+        var getTagsTask = GetTags(productId);
+        var getReviewsTask = GetReviews(productId);
+        await Task.WhenAll(getProductTask, getTagsTask, getReviewsTask);
+
+        var details = new ProductDetails(getProductTask.Result, getTagsTask.Result, getReviewsTask.Result);
 
         return details;
     }

@@ -1,3 +1,31 @@
 {
+  "GlobalConfiguration": {
 
+  },
+  "Routes": [
+    {
+      "UpstreamHttpMethod": [ "POST" ],
+      "UpstreamPathTemplate": "/gateway/login",
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/v1/account/login",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "identity.api",
+          "Port": 80
+        }
+      ]
+    },
+    {
+      "UpstreamHttpMethod": [ "PUT" ],
+      "UpstreamPathTemplate": "/gateway/account",
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/v1/account",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "identity.api",
+          "Port": 80
+        }
+      ]
+    }
+  ]
 }
