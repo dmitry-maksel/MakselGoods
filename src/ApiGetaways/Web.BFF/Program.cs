@@ -36,7 +36,7 @@ builder.WebHost.ConfigureKestrel(opts =>
 builder.Services.AddOcelot();
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
