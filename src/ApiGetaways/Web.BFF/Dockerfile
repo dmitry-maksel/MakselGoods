@@ -8,10 +8,10 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ApiGageways/Web.BFF/Web.BFF.csproj", "ApiGageways/Web.BFF/"]
-RUN dotnet restore "./ApiGageways/Web.BFF/Web.BFF.csproj"
+COPY ["ApiGetaways/Web.BFF/Web.BFF.csproj", "ApiGetaways/Web.BFF/"]
+RUN dotnet restore "./ApiGetaways/Web.BFF/Web.BFF.csproj"
 COPY . .
-WORKDIR "/src/ApiGageways/Web.BFF"
+WORKDIR "/src/ApiGetaways/Web.BFF"
 RUN dotnet build "./Web.BFF.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

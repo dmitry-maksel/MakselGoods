@@ -1,0 +1,22 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-bff
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-bff
+  template:
+    metadata:
+      labels:
+        app: web-bff
+    spec:
+      containers:
+      - name: web-bff
+        image: dm8t34/web-bff:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
