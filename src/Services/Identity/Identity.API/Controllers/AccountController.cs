@@ -92,7 +92,7 @@ namespace Identity.API.Controllers
         [Authorize]
         public IActionResult Test()
         {
-            return Ok();
+            return NoContent();
         }
     }
 }

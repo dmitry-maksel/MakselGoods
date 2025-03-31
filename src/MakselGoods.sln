@@ -44,6 +44,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abstractions", "Common\Abst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.BFF", "ApiGetaways\Web.BFF\Web.BFF.csproj", "{FAF0EDA6-447F-4410-BCF9-F277A1641719}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Web.Angular", "WebApps\Web.Angular\Web.Angular.esproj", "{7DDF9723-B1B4-4166-B698-C2F37DC71256}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,12 @@ Global
 		{FAF0EDA6-447F-4410-BCF9-F277A1641719}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAF0EDA6-447F-4410-BCF9-F277A1641719}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAF0EDA6-447F-4410-BCF9-F277A1641719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +110,7 @@ Global
 		{D4326610-292B-4A0E-8009-BB57FBC270C0} = {E8411BAF-9A62-43D4-9117-A5E15C953910}
 		{3ECC1340-C155-49BF-8086-2B683D0CEFE6} = {D4326610-292B-4A0E-8009-BB57FBC270C0}
 		{FAF0EDA6-447F-4410-BCF9-F277A1641719} = {4A97A4D8-B1F7-4E09-BCB0-8FC41950D486}
+		{7DDF9723-B1B4-4166-B698-C2F37DC71256} = {DE29EFD9-A14A-409D-94AF-D345B5D0D65A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2B15AD1-8CE8-4CBC-B90B-72A9B0CB9F5C}

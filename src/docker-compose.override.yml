@@ -11,14 +11,14 @@ services:
   identity.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__Default=Server=host.docker.internal,1433;Database=mg_identity;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
+      - ConnectionStrings__Default=Server=host.docker.internal,65067;Database=mg_identity;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
     ports:
       - "5051:80"
 
   products.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__Default=Server=host.docker.internal,1433;Database=mg_products;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
+      - ConnectionStrings__Default=Server=host.docker.internal,65067;Database=mg_products;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
     ports:
       - "5052:80"
       - "5552:81"
@@ -26,7 +26,7 @@ services:
   reviews.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__Default=Server=host.docker.internal,1433;Database=mg_reviews;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
+      - ConnectionStrings__Default=Server=host.docker.internal,65067;Database=mg_reviews;User Id=dockeruser;Password=YourStrongPassword!;Encrypt=True;TrustServerCertificate=True;
       - IsDockerRun=True
     ports:
       - "5053:80"

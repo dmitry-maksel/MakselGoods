@@ -48,19 +48,19 @@ public class ProductsRepository : IProductsRepository
 
     public async Task<ProductDto?> GetProductById(int id, CancellationToken cancellationToken)
     {
-        var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        var product = await _context.Products
+            .Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                CreatedAt = p.CreatedAt,
+                ModifiedAt = p.ModifiedAt,
+                DeletedAt = p.DeletedAt
+            })
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
-        if (product is null) return default;
-
-        return new ProductDto
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Description = product.Description,
-            CreatedAt = product.CreatedAt,
-            ModifiedAt = product.ModifiedAt,
-            DeletedAt = product.DeletedAt
-        };
+        return product;
     }
 
     public async Task<List<ProductTag>> GetProductTags(int productId, CancellationToken cancellationToken)
